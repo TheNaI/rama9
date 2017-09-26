@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,6 +18,11 @@ class DatabaseSeeder extends Seeder
 
         // $this->call(UserTableSeeder::class);
 
+	    $user = new User();
+		$user->name = 'Admin';
+		$user->email = 'admin@local.com';
+		$user->password = Hash::make('123456');
+	    $user->save();
         Model::reguard();
     }
 }
